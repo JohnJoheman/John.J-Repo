@@ -9,7 +9,10 @@ public class Class1 {
 		System.out.println("Vad heter du?");
 		String namn = scan.next();
 		
+		System.out.println("Hur gammal är du?");
+		int ålder = scan.nextInt();
 		
+	
 	}
 	
 }
