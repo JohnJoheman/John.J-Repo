@@ -12,8 +12,19 @@ public class Class1 {
 		System.out.println("Hur gammal är du?");
 		int ålder = scan.nextInt();
 		
+		System.out.println("Vad är din adress?");
+		String adress = scan.next();
 	
-	}
+		System.out.println("Vad är ditt postnummer?");
+		String postnummer = scan.next();
+		
+		System.out.println("Vilken stad bor du i?");
+		String stad = scan.next();
+		
+		System.out.println("Vad är ditt telefonnummer?");
+		int telefonnummer = scan.nextInt();
+		
+	}	
 	
 }
 
