@@ -19,7 +19,7 @@ public class Projekt {
 		System.out.println(fluidPressure(FluidTable.H20,  10));
 		System.out.println(pressureUnderWater(10));
 		System.out.println(kineticEnergy(2,2));
-
+		System.out.println(potentialEnergy(2,5));
 	}
 
 
@@ -55,11 +55,15 @@ public class Projekt {
 
 	public static double kineticEnergy(double mass, double velocity) {
 		double kineticEnergy = 0.5 * mass * (Math.pow(velocity, 2));
-		System.out.println("The kinetic energy when both mass and velocity are 2 each");
+		System.out.println("The kinetic energy when both mass and velocity are 2 each:");
 		return kineticEnergy;
 	}
 	
-
+	public static double potentialEnergy(double mass, double height) {
+		double potentialEnergy = mass * G * height;
+		System.out.println("the potential energy when mass are 2 and height are 5:");
+		return potentialEnergy;
+	}
 	
 	
 	
