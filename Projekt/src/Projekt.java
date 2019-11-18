@@ -20,6 +20,8 @@ public class Projekt {
 		System.out.println(pressureUnderWater(10));
 		System.out.println(kineticEnergy(2,2));
 		System.out.println(potentialEnergy(2,5));
+		System.out.println(delta(1,10));
+		System.out.println(delta(5,1));
 	}
 
 
@@ -64,6 +66,23 @@ public class Projekt {
 		System.out.println("the potential energy when mass are 2 and height are 5:");
 		return potentialEnergy;
 	}
+	
+	
+	
+	/**
+	 * uppgift 7...
+	 */
+	
+	
+	
+	public static double delta(double first, double last) {
+		double delta = last - first;
+		System.out.println("The difference between first and last number are:");
+		return delta;
+	}
+	
+	
+	
 	
 	
 	
