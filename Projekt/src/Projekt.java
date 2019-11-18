@@ -18,7 +18,7 @@ public class Projekt {
 		System.out.println(kelvinToCelsius(0));
 		System.out.println(fluidPressure(FluidTable.H20,  10));
 		System.out.println(pressureUnderWater(10));
-		
+		System.out.println(kineticEnergy(2,2));
 
 	}
 
@@ -43,7 +43,6 @@ public class Projekt {
 	}
 	
 	public static double fluidPressure(FluidTable fluid, double deep) {
-		
 		double fluidPressure = 10 * G * fluid.density;
 		System.out.println("Pressure 10 meter under water:");
 		return fluidPressure;
@@ -52,6 +51,12 @@ public class Projekt {
 		double pressureUnderWater = 10 * G * 998;
 		System.out.println("Pressure 10 meter under water:");
 		return pressureUnderWater;
+	}
+
+	public static double kineticEnergy(double mass, double velocity) {
+		double kineticEnergy = 0.5 * mass * (Math.pow(velocity, 2));
+		System.out.println("The kinetic energy when both mass and velocity are 2 each");
+		return kineticEnergy;
 	}
 	
 
