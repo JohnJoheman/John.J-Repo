@@ -29,6 +29,7 @@ public class Projekt {
 		System.out.println(svtVelocity(10,5));
 		System.out.println(svtDistance(10,5));
 		System.out.println(svtTime(10,2));
+		System.out.println(work(50,10));
 		
 	}
 
@@ -122,6 +123,12 @@ public class Projekt {
 		double svtTime = distance / velocity;
 		System.out.println("The time by dividing distance with velocity:");
 		return svtTime;
+	}
+	
+	public static double work(double force, double distance) {
+		double work = force * distance;
+		System.out.println("The work by multiplying a certain force with distanc");
+		return work;
 	}
 	
 	
