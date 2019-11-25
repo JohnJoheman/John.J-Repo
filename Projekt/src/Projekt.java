@@ -28,6 +28,7 @@ public class Projekt {
 		System.out.println(volumeToMass(SolidTable.IRON,1));
 		System.out.println(svtVelocity(10,5));
 		System.out.println(svtDistance(10,5));
+		System.out.println(svtTime(10,2));
 		
 	}
 
@@ -113,8 +114,14 @@ public class Projekt {
 	
 	public static double svtDistance(double velocity, double time) {
 		double svtDistance = velocity * time;
-		System.out.println("The time");
+		System.out.println("The distance by multiplying velocity with time:");
 		return svtDistance;
+	}
+	
+	public static double svtTime(double distance, double velocity) {
+		double svtTime = distance / velocity;
+		System.out.println("The time by dividing distance with velocity:");
+		return svtTime;
 	}
 	
 	
