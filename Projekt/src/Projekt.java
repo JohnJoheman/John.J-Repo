@@ -30,7 +30,7 @@ public class Projekt {
 		System.out.println(svtDistance(10,5));
 		System.out.println(svtTime(10,2));
 		System.out.println(work(50,10));
-		
+		System.out.println(power(1000,2));
 	}
 
 
@@ -127,10 +127,14 @@ public class Projekt {
 	
 	public static double work(double force, double distance) {
 		double work = force * distance;
-		System.out.println("The work by multiplying a certain force with distanc");
+		System.out.println("The work by multiplying a certain force with distance");
 		return work;
 	}
-	
+	public static double power(double work, double time) {
+		double power = work / time;
+		System.out.println("The power by dividing a certain work with time");
+		return power;
+	}
 	
 	
 	
