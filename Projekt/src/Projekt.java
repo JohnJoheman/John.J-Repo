@@ -31,6 +31,8 @@ public class Projekt {
 		System.out.println(svtTime(10,2));
 		System.out.println(work(50,10));
 		System.out.println(power(1000,2));
+		System.out.println(heat(SolidTable.IRON,1,2));
+		System.out.println(heat(FluidTable.WATER,1,10));
 	}
 
 
@@ -45,7 +47,6 @@ public class Projekt {
 	System.out.println("50 degrees Fahrenheit to Celsius is:");
 	return Celsius;
 	}
-	
 	
 	public static double kelvinToCelsius(double kelvin) {
 		double kelvinToCelsius = kelvin - 273.15;
@@ -127,17 +128,26 @@ public class Projekt {
 	
 	public static double work(double force, double distance) {
 		double work = force * distance;
-		System.out.println("The work by multiplying a certain force with distance");
+		System.out.println("The work by multiplying a certain force with distance:");
 		return work;
 	}
 	public static double power(double work, double time) {
 		double power = work / time;
-		System.out.println("The power by dividing a certain work with time");
+		System.out.println("The power by dividing a certain work with time:");
 		return power;
 	}
 	
+	public static double heat(SolidTable solid, double mass, double deltaT) {
+		double heat = solid.heatCapacity * mass * deltaT;
+		System.out.println("The energy requiered to heat up a certain material to given degrees:");
+		return heat;
+	}
 	
-	
+	public static double heat(FluidTable fluid, double mass, double deltaT) {
+		double heat = fluid.heatCapacity * mass * deltaT;
+		System.out.println("The energy requiered to heat up a certain fluid to given degrees:");
+		return heat;
+	}
 }
 
 
