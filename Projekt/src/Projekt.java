@@ -33,6 +33,8 @@ public class Projekt {
 		System.out.println(power(1000,2));
 		System.out.println(heat(SolidTable.IRON,1,2));
 		System.out.println(heat(FluidTable.WATER,1,10));
+		System.out.println(heat(GasTable.AIR,1,1));
+		System.out.println(velocityToHeight(9.82));
 	}
 
 
@@ -147,6 +149,18 @@ public class Projekt {
 		double heat = fluid.heatCapacity * mass * deltaT;
 		System.out.println("The energy requiered to heat up a certain fluid to given degrees:");
 		return heat;
+	}
+	
+	public static double heat(GasTable gas, double mass, double deltaT) {
+		double heat = gas.heatCapacity * mass * deltaT;
+		System.out.println("the enrgy requiered to heat up a certain mass to given degrees:");
+		return heat;
+	}
+	
+	public static double velocityToHeight(double velocity) {
+		double velocityToHeight = (Math.pow(Math.sin(1.570796),2 )* Math.pow(velocity, 2))/ (2*g_swe);
+		System.out.println("The height of an object with a certain speed upwards:");
+		return velocityToHeight;
 	}
 }
 
