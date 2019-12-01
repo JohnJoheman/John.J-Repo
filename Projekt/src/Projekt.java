@@ -70,6 +70,33 @@ public class Projekt {
 		System.out.println("Hur långt kommer Kalle om han springer i 40 sekunder med hastigheten 20m/s?");
 		System.out.println(svtDistance(20,40));
 	
+		
+		//Tio egna fysikaliska metoder:
+		
+		/**
+		 * Egna frågor till metoderna:
+		 * 1. Vad är rörelseenergin om ett föremål har massan 50kg och befinner sig 15 meter upp i luften?
+		 * 2. Vad är arean av en triangel med basen 10cm och höjden 15cm?
+		 * 3. Vad är arean av en circel med radien 7cm?
+		 * 4. Hur lång är hypotenusan om basen är 15cm och höjden 15cm?
+		 * 5. Vad är rörelseenergin om massan är 47 och hastigheten är 15m/s?
+		 * 6. Hur mycket kraft behövs för att lyfta en människa som väger 60kg?
+		 * 7. Hur många kilometer per timme är 5 miles per hour?
+		 * 8. Hur många centimeter är 8 inches?
+		 * 9. Hur många meter är 100 feet?
+		 * 10. Hur stor är volymen på en cylinder med radien 14cm och höjden 31cm?
+		 */
+		System.out.println(energyOfPosition(50,15));
+		System.out.println(areaOfTriangle(10,15));
+		System.out.println(areaOfCircle(7));
+		System.out.println(lengthOfHypotenuse(15, 15));
+		System.out.println(momentum(47, 15));
+		System.out.println(force(60));
+		System.out.println(mphToKmh(5));
+		System.out.println(inchesToCentimeter(8));
+		System.out.println(feetToMeter(100));
+		System.out.println(volumeCylinder(14, 31));
+		
 	}	
 
 	
@@ -314,6 +341,8 @@ public class Projekt {
 		return velocityToHeight;
 	}
 	
+	
+
 	/**
 	 * Räknar ut hur många gånger en boll kommer studsa om den förlorar 1% av sin energi efter varje studs
 	 * @param height - en variabel för höjden
@@ -334,6 +363,126 @@ public class Projekt {
 	
 	
 	
+	
+	//Tio egna fysikaliska metoder:
+	
+	
+	/**
+	 * Räknar ut lägesnergin med en given massa samt höjd
+	 * @param mass -  en variabel för massa
+	 * @param height - en variabel för höjd
+	 * @return - returnar rörelseenergi, den totala rörelseenergin
+	 */
+	public static double energyOfPosition(double mass, double height) {
+		double rörelseenergi = mass * g_swe * height;
+		System.out.println("Answer of question nr1");
+		return rörelseenergi;
+	}
+	
+	/**
+	 * Räknar ut arean av en triangel när man får reda på basen och höjden
+	 * @param base - en variabel för basen
+	 * @param height - en variabel för höjden
+	 * @return - returnar area, arean av traingeln
+	 */
+	public static double areaOfTriangle(double base, double height) {
+		double area = (base * height) / 2;
+		System.out.println("Answer of question nr2");
+		return area;
+	}
+	
+	/**
+	 * Rääknar ut arean av en circel när man vet radien
+	 * @param radius - en variabel för radien
+	 * @return - returnar area, arean av circeln
+	 */
+	public static double areaOfCircle(double radius) {
+		double area = Math.PI * radius * radius;
+		System.out.println("Answer of question nr3");
+		return area;
+	}
+	
+	/**
+	 * Räknar ut längden på hypotenusan av en rätvinklig triangel när man vet basen och höjden
+	 * @param height - en variabel för höjden
+	 * @param base - en variabel för basen
+	 * @return - returnar hypotenuse, hypotenusan på triangeln
+	 */
+	public static double lengthOfHypotenuse(double height, double base) {
+		double hypotenuse = Math.pow(height, 2) + Math.pow(base, 2);
+		hypotenuse = Math.sqrt(hypotenuse);
+		System.out.println("Answer of question nr4");
+		return hypotenuse;
+	}
+	
+	/**
+	 * Räknar ut rörelseenergin när man vet massan och hastigheten
+	 * @param mass - en variabel för massan
+	 * @param velocity - en variabel för hastigheten
+	 * @return - returnar rörelseenergi, en variabel för rörelseenergi (med samma namn bara)
+	 */
+	public static double momentum(double mass, double velocity) {
+		double rörelseenergi = (mass * Math.pow(velocity, 2)) / 2;
+		System.out.println("Answer of question nr5");
+		return rörelseenergi;
+	}
+	
+	/**
+	 * Räknar ut den kraft som behövs för att lyfta en människa som väger ett visst antal kilo
+	 * @param mass - en variabel för massan (vikten)
+	 * @return - returnar force, kraften som krävs
+	 */
+	public static double force(double mass) {
+		double force = mass * g_swe;
+		System.out.println("Answer of question nr6");
+		return force;
+	}
+	
+	/**
+	 * Omvandlar miles per hour till kilometer per timme
+	 * @param velocity - en variabel för hastigheten
+	 * @return - returnar speed, hastigheten i km/h
+	 */
+	public static double mphToKmh(double velocity) {
+		double speed = velocity * 1.609344;
+		System.out.println("Answer of question nr7");
+		return speed;
+	}
+	
+	/**
+	 * Omvandlar inches till centimeter
+	 * @param length - en variabel för längden
+	 * @return - returnar lenthInCentimeters, längden fast omvandlad till centimeter
+	 */
+	public static double inchesToCentimeter(double length) {
+		double lengthInCentimeters = length * 2.54;
+		System.out.println("Answer of question nr8");
+		return lengthInCentimeters;
+	}
+	
+	/**
+	 * Omvandlar feet till meter
+	 * @param length - en variabel för längden
+	 * @return - newLength, den nya längden omvandlad till meter
+	 */
+	public static double feetToMeter(double length) {
+		double newLength = length * 0.3048;
+		System.out.println("Answer of question nr9");
+		return newLength;
+	}
+	
+	/**
+	 * Räknar ut volymen på en cylinder när man vet radien och höjden
+	 * @param radius - en variabel för radien
+	 * @param height - en variabel för höjden
+	 * @return - returnar area, arean för cylindern
+	 */
+	public static double volumeCylinder(double radius, double height) {
+		double area = 2 * Math.PI * radius * (height + radius);
+		System.out.println("Answer of question nr10");
+		return area;
+	}
+		
 }
 
 
