@@ -35,8 +35,42 @@ public class Projekt {
 		System.out.println(heat(FluidTable.WATER,1,10));
 		System.out.println(heat(GasTable.AIR,1,1));
 		System.out.println(velocityToHeight(9.82));
-	}
-
+		
+		//Svaren på de 10 frågorna:
+		
+		//60dm^3 är detsamma som 0.6m^3
+		System.out.println("Hur mycket väger 60dm^3 järn?");
+		System.out.println(volumeToMass(SolidTable.IRON,0.06) + "kg");
+		
+		//50 minuter är detsamma som 3000 sekunder
+		System.out.println("Hur långt hinner Tomas om han löper med medelhastigheten 2.7m/s i 50 minuter?");
+		System.out.println(svtDistance(2.7,3000));
+	
+		System.out.println("Hur mycket energi krävs för att värma upp 4 liter vatten från rumstemperatur (22 grader) till kokpunkten");
+		System.out.println(heat(FluidTable.WATER,4,78));
+		
+		System.out.println("Hur stort är det totala trycket 75 meter under havsytan?");
+		System.out.println(fluidPressure(FluidTable.WATER,75));
+		
+		System.out.println("Tomas som är 180cm lång kastar upp en boll med massan 250 gram i luften så den får starthastigheten 60km/h. Hur högt kommer bollen?");
+		System.out.println(velocityToHeight(16.6) + 1.8 + "m");
+		
+		System.out.println("En bil med massan 735kg accelererar med konstand acceleration från 0-100 på 4.8 sekunder. Hur stor effekt har bilens motor uppnåt?");
+		System.out.println(power(580500, 4.8) + "W");
+	
+		System.out.println("En studsboll som väger 1kg släpps från 10 meters höjd och varje gång den nuddar marken så tappar den 1% av sin energi. Hur många gånger kommer bollen studsa i marken innan den inte studsar högre än 0.5 meter?");
+		System.out.println(amountOfBounces(12));
+	
+		System.out.println("Hur hög hastighet får kulan om den kommer 15 meter på 2.79 sekunder?");
+		System.out.println(svtVelocity(15,2.79));
+	
+		System.out.println("Hur många fler mål gjorde IFK Göteborg än AIK om det blev 11-1 till IFK Göteborg?");
+		System.out.println(delta(1,11));
+	
+		System.out.println("Hur långt kommer Kalle om han springer i 40 sekunder med hastigheten 20m/s?");
+		System.out.println(svtDistance(20,40));
+	
+	}	
 
 	
 	
@@ -49,7 +83,7 @@ public class Projekt {
 	 */
 	public static double fahrenheitToCelsius(double fahrenheit) {
 		double Celsius = (fahrenheit-32)*5/9;
-		System.out.println("Result of method nr 1:");
+		System.out.println("Method nr 1:");
 		return Celsius;
 	}
 	
@@ -60,7 +94,7 @@ public class Projekt {
 	 */
 	public static double kelvinToCelsius(double kelvin) {
 		double kelvinToCelsius = kelvin - 273.15;
-		System.out.println("Result of method nr 2:");
+		System.out.println("Method nr 2:");
 		return kelvinToCelsius;
 	}
 	
@@ -72,7 +106,7 @@ public class Projekt {
 	 */
 	public static double fluidPressure(FluidTable fluid, double deep) {
 		double fluidPressure = 10 * G * fluid.density;
-		System.out.println("Result of method nr 3:");
+		System.out.println("Method nr 3:");
 		return fluidPressure;
 	}
 	
@@ -83,7 +117,7 @@ public class Projekt {
 	 */
 	public static double pressureUnderWater(double deep) {
 		double pressureUnderWater = 10 * G * 998;
-		System.out.println("Result of method nr 4:");
+		System.out.println("Method nr 4:");
 		return pressureUnderWater;
 	}
 
@@ -95,7 +129,7 @@ public class Projekt {
 	 */
 	public static double kineticEnergy(double mass, double velocity) {
 		double kineticEnergy = 0.5 * mass * (Math.pow(velocity, 2));
-		System.out.println("Result of method nr 5:");
+		System.out.println("Method nr 5:");
 		return kineticEnergy;
 	}
 	
@@ -107,7 +141,7 @@ public class Projekt {
 	 */
 	public static double potentialEnergy(double mass, double height) {
 		double potentialEnergy = mass * G * height;
-		System.out.println("Result of method nr 6:");
+		System.out.println("Method nr 6:");
 		return potentialEnergy;
 	}
 	
@@ -118,7 +152,7 @@ public class Projekt {
 	 */
 	public static double fallSpeed(double height) {
 		double fallSpeed = Math.sqrt ((2*height) / g_swe) * g_swe;
-		System.out.println("Result of method nr 7:");
+		System.out.println("Method nr 7:");
 		return fallSpeed;
 	}
 	 
@@ -130,7 +164,7 @@ public class Projekt {
 	 */
 	public static double delta(double first, double last) {
 		double delta = last - first;
-		System.out.println("Result of method nr 8:");
+		System.out.println("Method nr 8:");
 		return delta;
 	}
 	
@@ -142,7 +176,7 @@ public class Projekt {
 	 */
 	public static double volumeToMass(FluidTable fluid, double volume) {
 		double volumeToMass = fluid.density * volume;
-		System.out.println("Result of method nr 9:");
+		System.out.println("Method nr 9:");
 		return volumeToMass;
 	}
 	
@@ -154,7 +188,7 @@ public class Projekt {
 	 */
 	public static double volumeToMass(GasTable gas, double volume) {
 		double volumeToMass = gas.density * volume;
-		System.out.println("Result of method nr 10:");
+		System.out.println("Method nr 10:");
 		return volumeToMass;
 	}
 	
@@ -166,7 +200,7 @@ public class Projekt {
 	 */
 	public static double volumeToMass(SolidTable solid, double volume) {
 		double volumeToMass = solid.density * volume;
-		System.out.println("Result of method nr 11:");
+		System.out.println("Method nr 11:");
 		return volumeToMass;
 	}
 	
@@ -178,7 +212,7 @@ public class Projekt {
 	 */
 	public static double svtVelocity(double distance, double time) {
 		double svtVelocity = distance / time;
-		System.out.println("Result of method nr 12:");
+		System.out.println("Method nr 12:");
 		return svtVelocity;
 	}
 	
@@ -190,7 +224,7 @@ public class Projekt {
 	 */
 	public static double svtDistance(double velocity, double time) {
 		double svtDistance = velocity * time;
-		System.out.println("Result of method nr 13:");
+		System.out.println("Method nr 13:");
 		return svtDistance;
 	}
 	
@@ -202,7 +236,7 @@ public class Projekt {
 	 */
 	public static double svtTime(double distance, double velocity) {
 		double svtTime = distance / velocity;
-		System.out.println("Result of method nr 14:");
+		System.out.println("Method nr 14:");
 		return svtTime;
 	}
 	
@@ -214,7 +248,7 @@ public class Projekt {
 	 */
 	public static double work(double force, double distance) {
 		double work = force * distance;
-		System.out.println("Result of method nr 15:");
+		System.out.println("Method nr 15:");
 		return work;
 	}
 	
@@ -226,12 +260,12 @@ public class Projekt {
 	 */
 	public static double power(double work, double time) {
 		double power = work / time;
-		System.out.println("Result of method nr 16:");
+		System.out.println("Method nr 16:");
 		return power;
 	}
 	
 	/**
-	 * räknar ut hur ycket energi som krävs för att värma ett visst material ett angivet grader
+	 * räknar ut hur mycket energi som krävs för att värma ett visst material ett angivet grader
 	 * @param solid - en variabel för materialet
 	 * @param mass - en variabel för massan
 	 * @param deltaT - en variabel för skillnaden mellan temperaturen i början och slutet
@@ -239,7 +273,7 @@ public class Projekt {
 	 */
 	public static double heat(SolidTable solid, double mass, double deltaT) {
 		double energy = solid.heatCapacity * mass * deltaT;
-		System.out.println("Result of method nr 17:");
+		System.out.println("Method nr 17:");
 		return energy;
 	}
 	
@@ -252,7 +286,7 @@ public class Projekt {
 	 */
 	public static double heat(FluidTable fluid, double mass, double deltaT) {
 		double energy = fluid.heatCapacity * mass * deltaT;
-		System.out.println("Result of method nr 18:");
+		System.out.println("Method nr 18:");
 		return energy;
 	}
 	
@@ -265,7 +299,7 @@ public class Projekt {
 	 */
 	public static double heat(GasTable gas, double mass, double deltaT) {
 		double power = gas.heatCapacity * mass * deltaT;
-		System.out.println("Result of method nr 19:");
+		System.out.println("Method nr 19:");
 		return power;
 	}
 	
@@ -276,11 +310,26 @@ public class Projekt {
 	 */
 	public static double velocityToHeight(double velocity) {
 		double velocityToHeight = (Math.pow(Math.sin(1.570796),2 )* Math.pow(velocity, 2))/ (2*g_swe);
-		System.out.println("Result of method nr 20:");
+		System.out.println("Method nr 20:");
 		return velocityToHeight;
 	}
 	
-	
+	/**
+	 * Räknar ut hur många gånger en boll kommer studsa om den förlorar 1% av sin energi efter varje studs
+	 * @param height - en variabel för höjden
+	 * @return - bounceCounter, hur många gånger bollen har studsat
+	 */
+	public static double amountOfBounces(double height) {
+		double lastEnergy = height * g_swe;
+		int bounceCounter = 0;
+		double i = 12;
+		while (i >= 0.5) {
+			lastEnergy *=0.99;
+			i = lastEnergy / g_swe;
+			bounceCounter++;
+		}
+		return bounceCounter;
+	}
 	
 	
 	
