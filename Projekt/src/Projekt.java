@@ -16,7 +16,7 @@ public class Projekt {
 
 		System.out.println(fahrenheitToCelsius(50));
 		System.out.println(kelvinToCelsius(0));
-		System.out.println(fluidPressure(FluidTable.H20,  10));
+		System.out.println(fluidPressure(FluidTable.H20, 10));
 		System.out.println(pressureUnderWater(10));
 		System.out.println(kineticEnergy(2,2));
 		System.out.println(potentialEnergy(2,5));
@@ -45,121 +45,120 @@ public class Projekt {
 	
 	public static double fahrenheitToCelsius(double fahrenheit) {
 		double Celsius = (fahrenheit-32)*5/9;
-		
-	System.out.println("50 degrees Fahrenheit to Celsius is:");
-	return Celsius;
+		System.out.println("Result of method nr 1:");
+		return Celsius;
 	}
 	
 	public static double kelvinToCelsius(double kelvin) {
 		double kelvinToCelsius = kelvin - 273.15;
-		System.out.println("0 degrees celsius to kelvin is:");
+		System.out.println("Result of method nr 2:");
 		return kelvinToCelsius;
 	}
 	
 	public static double fluidPressure(FluidTable fluid, double deep) {
 		double fluidPressure = 10 * G * fluid.density;
-		System.out.println("Pressure 10 meter under water:");
+		System.out.println("Result of method nr 3:");
 		return fluidPressure;
 	}
 	public static double pressureUnderWater(double deep) {
 		double pressureUnderWater = 10 * G * 998;
-		System.out.println("Pressure 10 meter under water:");
+		System.out.println("Result of method nr 4:");
 		return pressureUnderWater;
 	}
 
 	public static double kineticEnergy(double mass, double velocity) {
 		double kineticEnergy = 0.5 * mass * (Math.pow(velocity, 2));
-		System.out.println("The kinetic energy when both mass and velocity are 2 each:");
+		System.out.println("Result of method nr 5:");
 		return kineticEnergy;
 	}
 	
 	public static double potentialEnergy(double mass, double height) {
 		double potentialEnergy = mass * G * height;
-		System.out.println("the potential energy when mass are 2 and height are 5:");
+		System.out.println("Result of method nr 6");
 		return potentialEnergy;
 	}
 	
 	
 	public static double fallSpeed(double height) {
 		double fallSpeed = Math.sqrt ((2*height) / g_swe) * g_swe;
-		System.out.println("The speed of an object from a certain height");
+		System.out.println("Result of method nr 7:");
 		return fallSpeed;
 	}
 	 
 	public static double delta(double first, double last) {
 		double delta = last - first;
-		System.out.println("The difference between first and last number are:");
+		System.out.println("Result of method nr 8:");
 		return delta;
 	}
 	
 	public static double volumeToMass(FluidTable fluid, double volume) {
 		double volumeToMass = fluid.density * volume;
-		System.out.println("Converts a certain volume of a liquid to a mass:");
+		System.out.println("Result of method nr 9:");
 		return volumeToMass;
 	}
 	
 	public static double volumeToMass(GasTable gas, double volume) {
 		double volumeToMass = gas.density * volume;
-		System.out.println("Converts a certain volume of gas to mass:");
+		System.out.println("Result of method nr 10:");
 		return volumeToMass;
 	}
 	
 	public static double volumeToMass(SolidTable solid, double volume) {
 		double volumeToMass = solid.density * volume;
-		System.out.println("Converts a certain volume of materia to mass:");
+		System.out.println("Result of method nr 11:");
 		return volumeToMass;
 	}
 	
 	public static double svtVelocity(double distance, double time) {
 		double svtVelocity = distance / time;
-		System.out.println("The average speed:");
+		System.out.println("Result of method nr 12:");
 		return svtVelocity;
 	}
 	
 	public static double svtDistance(double velocity, double time) {
 		double svtDistance = velocity * time;
-		System.out.println("The distance by multiplying velocity with time:");
+		System.out.println("Result of method nr 13:");
 		return svtDistance;
 	}
 	
 	public static double svtTime(double distance, double velocity) {
 		double svtTime = distance / velocity;
-		System.out.println("The time by dividing distance with velocity:");
+		System.out.println("Result of method nr 14:");
 		return svtTime;
 	}
 	
 	public static double work(double force, double distance) {
 		double work = force * distance;
-		System.out.println("The work by multiplying a certain force with distance:");
+		System.out.println("Result of method nr 15:");
 		return work;
 	}
 	public static double power(double work, double time) {
 		double power = work / time;
-		System.out.println("The power by dividing a certain work with time:");
+		System.out.println("Result of method nr 16:");
 		return power;
 	}
 	
 	public static double heat(SolidTable solid, double mass, double deltaT) {
 		double heat = solid.heatCapacity * mass * deltaT;
-		System.out.println("The energy requiered to heat up a certain material to given degrees:");
+		System.out.println("Result of method nr 17:");
 		return heat;
 	}
 	
 	public static double heat(FluidTable fluid, double mass, double deltaT) {
 		double heat = fluid.heatCapacity * mass * deltaT;
-		System.out.println("The energy requiered to heat up a certain fluid to given degrees:");
+		System.out.println("Result of method nr 18:");
 		return heat;
 	}
 	
 	public static double heat(GasTable gas, double mass, double deltaT) {
 		double heat = gas.heatCapacity * mass * deltaT;
-		System.out.println("the enrgy requiered to heat up a certain mass to given degrees:");
+		System.out.println("Result of method nr 19:");
 		return heat;
 	}
 	
 	public static double velocityToHeight(double velocity) {
 		double velocityToHeight = (Math.pow(Math.sin(1.570796),2 )* Math.pow(velocity, 2))/ (2*g_swe);
-		System.out.println("The height of an object with a certain speed upwards:");
+		System.out.println("Result of method nr 20:");
 		return velocityToHeight;
 	}
 }
