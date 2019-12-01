@@ -42,125 +42,249 @@ public class Projekt {
 	
 	
 	
-	
+	/**
+	 * Omvandlar fahrenheit till Celsius
+	 * @param - fahrenheit - temperaturen i fahrenheit
+	 * @return - Returnar temperaturen i Celsius
+	 */
 	public static double fahrenheitToCelsius(double fahrenheit) {
 		double Celsius = (fahrenheit-32)*5/9;
 		System.out.println("Result of method nr 1:");
 		return Celsius;
 	}
 	
+	/**
+	 * Omvandlar Kelvin till Celsius
+	 * @param kelvin - temperaturen i kelvin
+	 * @return - returnar kelvinToCelsius, alltså resultatet angivet i Celsius 
+	 */
 	public static double kelvinToCelsius(double kelvin) {
 		double kelvinToCelsius = kelvin - 273.15;
 		System.out.println("Result of method nr 2:");
 		return kelvinToCelsius;
 	}
 	
+	/**
+	 * Räknar ut vätsketrycket i en vätska vid ett visst djup
+	 * @param fluid - variabel för en given vätska 
+	 * @param deep - variabel för djupet i vätskan
+	 * @return - returnar fluidPressure, alltså vätsketrycket 
+	 */
 	public static double fluidPressure(FluidTable fluid, double deep) {
 		double fluidPressure = 10 * G * fluid.density;
 		System.out.println("Result of method nr 3:");
 		return fluidPressure;
 	}
+	
+	/**
+	 * Räknar ut vätsketrycket i vatten vid ett visst djup
+	 * @param deep - en variabel för djupet
+	 * @return - returnar pressureUnderWater, vätsketrycket i vattnet vid det angivna djupet
+	 */
 	public static double pressureUnderWater(double deep) {
 		double pressureUnderWater = 10 * G * 998;
 		System.out.println("Result of method nr 4:");
 		return pressureUnderWater;
 	}
 
+	/**
+	 * Räknar ut kinetisk energi med hjälp av massa och hastighet
+	 * @param mass - en variabel för massan
+	 * @param velocity - en variabel för hastigheten
+	 * @return - returnar kineticEnergy, den resulterande kinetiska energin
+	 */
 	public static double kineticEnergy(double mass, double velocity) {
 		double kineticEnergy = 0.5 * mass * (Math.pow(velocity, 2));
 		System.out.println("Result of method nr 5:");
 		return kineticEnergy;
 	}
 	
+	/**
+	 * Räknar ut potentiell energi med hjälp av massa och höjd
+	 * @param mass - variabel för massan
+	 * @param height - variabel för höjden
+	 * @return - returnar potentialEnergy, den potentiella energin
+	 */
 	public static double potentialEnergy(double mass, double height) {
 		double potentialEnergy = mass * G * height;
-		System.out.println("Result of method nr 6");
+		System.out.println("Result of method nr 6:");
 		return potentialEnergy;
 	}
 	
-	
+	/**
+	 * Räknar ut hur hög hastighet man kommer upp i om man släpper ett föremål från en viss höjd
+	 * @param height - en variabel för höjden
+	 * @return - returnar fallSpeed, hastigheten som föremålet kommer upp i
+	 */
 	public static double fallSpeed(double height) {
 		double fallSpeed = Math.sqrt ((2*height) / g_swe) * g_swe;
 		System.out.println("Result of method nr 7:");
 		return fallSpeed;
 	}
 	 
+	/**
+	 * Räknar ut skillnad mellan två givna värden
+	 * @param first - en variabel för det första värdet
+	 * @param last - en variabel för det andra värdet
+	 * @return - returnar delta, skillnaden mellan de två värdena
+	 */
 	public static double delta(double first, double last) {
 		double delta = last - first;
 		System.out.println("Result of method nr 8:");
 		return delta;
 	}
 	
+	/**
+	 * Gör om en viss volym av vätska till en massa
+	 * @param fluid - en variabel för en viss vätska
+	 * @param volume - en variabel för volymen
+	 * @return - returnar volumeToMass, den slutgiltiga massan
+	 */
 	public static double volumeToMass(FluidTable fluid, double volume) {
 		double volumeToMass = fluid.density * volume;
 		System.out.println("Result of method nr 9:");
 		return volumeToMass;
 	}
 	
+	/**
+	 * gör om en viss volym av gas till en massa
+	 * @param gas - en variabel för en viss gas
+	 * @param volume - en variabel för volymen
+	 * @return - returnar volumeToMass, den slutgiltiga massan
+	 */
 	public static double volumeToMass(GasTable gas, double volume) {
 		double volumeToMass = gas.density * volume;
 		System.out.println("Result of method nr 10:");
 		return volumeToMass;
 	}
 	
+	/**
+	 * gör om en viss volym av materia till en massa
+	 * @param solid - en variabel för en viss materia
+	 * @param volume - en variabel för volymen
+	 * @return - returnar volumeToMass, den slutgiltiga massan
+	 */
 	public static double volumeToMass(SolidTable solid, double volume) {
 		double volumeToMass = solid.density * volume;
 		System.out.println("Result of method nr 11:");
 		return volumeToMass;
 	}
 	
+	/**
+	 * räknar ut medelhastigheten med hjälp av sträcka och tid
+	 * @param distance - en variabel för distansen
+	 * @param time - en variabel för tiden
+	 * @return - returnar svtVelocity, medelhastigheten
+	 */
 	public static double svtVelocity(double distance, double time) {
 		double svtVelocity = distance / time;
 		System.out.println("Result of method nr 12:");
 		return svtVelocity;
 	}
 	
+	/**
+	 * räknar ut sträcka med hjälp av hastighet och tid
+	 * @param velocity - en variabel för hastigheten
+	 * @param time - en variabel för tiden
+	 * @return - returnar svtDistance, sträckan
+	 */
 	public static double svtDistance(double velocity, double time) {
 		double svtDistance = velocity * time;
 		System.out.println("Result of method nr 13:");
 		return svtDistance;
 	}
 	
+	/**
+	 * räknar ut tid med hjälp av sträcka och hastighet
+	 * @param distance - en variabel för distansen
+	 * @param velocity - en variabel för hastigheten
+	 * @return - returnar svtTime, tiden
+	 */
 	public static double svtTime(double distance, double velocity) {
 		double svtTime = distance / velocity;
 		System.out.println("Result of method nr 14:");
 		return svtTime;
 	}
 	
+	/**
+	 * räknar ut arbete med hjälp av kraft och sträcka
+	 * @param force - en variabel för kraft
+	 * @param distance - en variabel för distansen/sträckan
+	 * @return - returnar work, arbetet som utförs
+	 */
 	public static double work(double force, double distance) {
 		double work = force * distance;
 		System.out.println("Result of method nr 15:");
 		return work;
 	}
+	
+	/**
+	 * räknar ut effekt med hjälp av arbete och tid
+	 * @param work - en variabel för arbete
+	 * @param time - en variabel för tid
+	 * @return - returnar power, slutgiltiga effekten
+	 */
 	public static double power(double work, double time) {
 		double power = work / time;
 		System.out.println("Result of method nr 16:");
 		return power;
 	}
 	
+	/**
+	 * räknar ut hur ycket energi som krävs för att värma ett visst material ett angivet grader
+	 * @param solid - en variabel för materialet
+	 * @param mass - en variabel för massan
+	 * @param deltaT - en variabel för skillnaden mellan temperaturen i början och slutet
+	 * @return - returnar energy, energin som krävs
+	 */
 	public static double heat(SolidTable solid, double mass, double deltaT) {
-		double heat = solid.heatCapacity * mass * deltaT;
+		double energy = solid.heatCapacity * mass * deltaT;
 		System.out.println("Result of method nr 17:");
-		return heat;
+		return energy;
 	}
 	
+	/**
+	 * räknar ut hur mycket energi som krävs för att värma en viss massa vätska ett angivet antal grader
+	 * @param fluid - en variabel för vätskan
+	 * @param mass - en variabel för massan hos vätskan
+	 * @param deltaT - en variabel för skillnaden mellan temperaturen i början och slutet.
+	 * @return - returnar energy, energin som krävs
+	 */
 	public static double heat(FluidTable fluid, double mass, double deltaT) {
-		double heat = fluid.heatCapacity * mass * deltaT;
+		double energy = fluid.heatCapacity * mass * deltaT;
 		System.out.println("Result of method nr 18:");
-		return heat;
+		return energy;
 	}
 	
+	/**
+	 * räknar ut hur mycket energi som krävs för att värma en viss massa gas ett angivet antal grader
+	 * @param gas -  en variabel för gas
+	 * @param mass - en variabel för massan
+	 * @param deltaT -  en variabel för skillnaden mellan temperaturen i början och slutet
+	 * @return - returnar power, mängden av energin som behövs
+	 */
 	public static double heat(GasTable gas, double mass, double deltaT) {
-		double heat = gas.heatCapacity * mass * deltaT;
+		double power = gas.heatCapacity * mass * deltaT;
 		System.out.println("Result of method nr 19:");
-		return heat;
+		return power;
 	}
 	
+	/**
+	 * räknar ut hur högt ett föremål med en viss hastighet uppåt kommer
+	 * @param velocity - en variabel för hastigheten
+	 * @return - returnar velocityToHeight, den slutgiltiga höjden
+	 */
 	public static double velocityToHeight(double velocity) {
 		double velocityToHeight = (Math.pow(Math.sin(1.570796),2 )* Math.pow(velocity, 2))/ (2*g_swe);
 		System.out.println("Result of method nr 20:");
 		return velocityToHeight;
 	}
+	
+	
+	
+	
+	
+	
 }
 
 
