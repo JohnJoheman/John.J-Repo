@@ -22,7 +22,7 @@ public class GuessTheNumberGame {
 	public static void main(String[] args) {
 		
 		launchGuessTheNumberGame();
-	}
+	
 	
 	public static void launchGuessTheNumberGame() {
 		
@@ -32,12 +32,13 @@ public class GuessTheNumberGame {
 		System.out.println("Hello and welcome to GuessTheNumberGame");
 		System.out.println();
 		System.out.println("You're going to guess a number thats randomly generated between a certain interval");
+		System.out.println();
 		System.out.println("Easy = number between 1-10, with a total of 5 guesses");
 		System.out.println("Medium = number between 1-100, with a total of 10 guessses");
 		System.out.println("Hard = number between 1-1000, with a total of 10 guesses");
 			
 		System.out.println("Please choose a difficulty by typing it down below");
-		System.out.println("If you don't want to play, just type " + "Exit" + "down below");
+		System.out.println("If you don't want to play, just type " + "'Exit'");
 		
 		switch (chooseDifficulty) {
 		
@@ -73,18 +74,46 @@ public class GuessTheNumberGame {
 			 System.out.println("Hope to see you soon, haev a great time!");
 			
 		}
-		}
+		} while (run);
 		
+	}
+	
+	
+	public static void easyDifficulty() {
+		
+		guessesLeft = 5;
+		minNumber = 1;
+		maxNumber = 10;
+		
+		theAlgorithmForGuessTheNumberGame();
+	}
+	
+	
+	public static void mediumDifficulty() {
+		
+		guessesLeft = 10;
+		minNumber = 1;
+		maxNumber = 100;
+		
+		theAlgorithmForGuessTheNumberGame();
+
+	}
+	
+	
+	public static void hardDifficulty() {
+		
+		guessesLeft = 10;
+		minNumber = 1;
+		maxNumber = 1000;
+		
+		theAlgorithmForGuessTheNumberGame();
+
 	}
 	
 	
 	
 	
-	
-	
-	
-	
-		public static void theAlgorithmForGuessTheNumber()	{
+		public static void theAlgorithmForGuessTheNumberGame()	{
 			
 			System.out.println("Let's see if you can guess the number");
 			
@@ -120,3 +149,4 @@ public class GuessTheNumberGame {
 	}
 	
 }
+
