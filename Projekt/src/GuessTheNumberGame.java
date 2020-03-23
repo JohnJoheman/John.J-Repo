@@ -3,19 +3,18 @@ import java.util.Random;
 import java.util.Scanner;
 public class GuessTheNumberGame {
 	
-	static Scanner playersInput = new Scanner(System.in);
+	static Scanner playersInput = new Scanner(System.in);  //So the player can type in the console
 	
 	
-	public static int maxNumber;
-	public static int minNumber;
-	public static int guessesLeft;
-	public static int difficulty;
-	public static int wantToContinue;
-	public static int correctNumber;
-	public static int guessedNumber;
-	public static boolean run = true;
-	public static String chooseDifficulty;
-	public static String playAgain;
+	public static int maxNumber;			//The highest possible generated number
+	public static int minNumber;			//The lowest possible generated number
+	public static int guessesLeft;			//The amount of guesses the player still has
+	public static int difficulty;			//The difficulty the player choose
+	public static int correctNumber;		//The correct number that's randomly generated
+	public static int guessedNumber;		//The number that the player guesses
+	public static boolean run = true;		//The program will run as long as "run" = true, otherwise it'll stop
+	public static String chooseDifficulty;	//The string that saves the input from the player when choosing difficulty
+	public static String playAgain;			//The string that saves the input from the player when choosing if he/she wants to play again
 	
 
 
@@ -25,6 +24,12 @@ public class GuessTheNumberGame {
 	
 	}
 	
+	/**
+	 * This method randomly generates the correct number between the interval, depending on what difficulty the player choose.
+	 * @param maxNumber - the highest number in the interval
+	 * @param minNumber - the lowest number in the interval
+	 * @return the number which the player has to guess
+	 */
 		public static int randomNumber(int maxNumber, int minNumber) {
 			Random correctNumber = new Random();
 			return correctNumber.nextInt((maxNumber - minNumber) + 1) + minNumber;
@@ -32,7 +37,10 @@ public class GuessTheNumberGame {
 		}
 		
 		
-		
+		/**
+		 * A method that makes sure that the game will not crash when typing in anything else besides an integer
+		 * @return - an int-input from the player
+		 */
 		public static int checkIfInputAreInt() {
 			int inputFromPlayer;
 			try {
@@ -47,7 +55,10 @@ public class GuessTheNumberGame {
 		}
 	
 		
-		
+		/**
+		 * A method that makes sure that the game will not crash when typing in anything else besides a String
+		 * @return - a string-input from the player
+		 */
 		public static String checkIfInputAreString() {
 			String StringInputFromPlayer;
 			try {
@@ -62,7 +73,9 @@ public class GuessTheNumberGame {
 		}
 		
 		
-		
+		/**
+		 * This method contain the code of the game
+		 */
 	public static void launchGuessTheNumberGame() {
 		
 	do {
@@ -107,7 +120,6 @@ public class GuessTheNumberGame {
 		System.out.println("Yes / No");
 		
 		playAgain = checkIfInputAreString();
-		
 		playAgain = playersInput.nextLine();
 		
 		switch (playAgain) {
@@ -125,6 +137,10 @@ public class GuessTheNumberGame {
 	}
 	
 	
+	/**
+	 * This method contains some code for the easiest difficulty
+	 * It changes the values
+	 */
 	public static void easyDifficulty() {
 		
 		guessesLeft = 5;
@@ -136,6 +152,10 @@ public class GuessTheNumberGame {
 	}
 	
 	
+	/**
+	 * This method contains some code for the medium difficulty
+	 * It changes the values
+	 */
 	public static void mediumDifficulty() {
 		
 		guessesLeft = 10;
@@ -146,7 +166,10 @@ public class GuessTheNumberGame {
 		theAlgorithmForGuessTheNumberGame();
 	}
 	
-	
+	/**
+	 * This method contain some code for the Hard difficulty
+	 * It changes the values
+	 */
 	public static void hardDifficulty() {
 		
 		guessesLeft = 10;
@@ -159,6 +182,9 @@ public class GuessTheNumberGame {
 
 	
 	
+	/**
+	 * This method contains the whole algorithm for the game, how GuessTheNumberGame works
+	 */
 		public static void theAlgorithmForGuessTheNumberGame()	{
 			
 			System.out.println("Let's see if you can guess the number");
