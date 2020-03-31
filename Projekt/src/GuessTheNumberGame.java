@@ -16,6 +16,7 @@ public class GuessTheNumberGame {
 	public static String chooseDifficulty;	//The string that saves the input from the player when choosing difficulty
 	public static String playAgain;			//The string that saves the input from the player when choosing if he/she wants to play again
 	
+	//I give these variables a value so I don't have to do it within the methods later on in my code
 
 
 	public static void main(String[] args) {
@@ -45,11 +46,13 @@ public class GuessTheNumberGame {
 			int inputFromPlayer;
 			try {
 				inputFromPlayer = playersInput.nextInt();
+				//Checks so the input from the player are an int, and if it isn't, the code below will run
 			}
 			catch (InputMismatchException e) {
 				System.out.println("You have to write an integer!" + "Try again");
 				playersInput.nextLine();
 				inputFromPlayer = checkIfInputAreInt();
+				//If the input isn't an int, it will say "You have to write an integer...."
 			}
 			return inputFromPlayer;
 		}
@@ -65,9 +68,10 @@ public class GuessTheNumberGame {
 				StringInputFromPlayer = playersInput.nextLine();
 			}
 			catch (InputMismatchException e) {
-				System.out.println("You have to write a difficulty, check if you've typed it correctly with uppercase!");
+				System.out.println("You have to write a difficulty, check if you've typed it correctly with lowercase!");
 				playersInput.nextInt();
 				StringInputFromPlayer = checkIfInputAreString();
+				// If the input isn't a string, it will say "You have to write a difficulty, check if you've typed it correctly with lowercase!
 			}
 			return StringInputFromPlayer;
 		}
@@ -91,7 +95,9 @@ public class GuessTheNumberGame {
 		System.out.println();
 		System.out.println("Please choose a difficulty by typing it down below." + " " + "If you don't want to play, just type 'exit'.");
 		
+		// This is what the player sees when he/she runs the program or starts over  
 		chooseDifficulty = checkIfInputAreString();
+		// runs the try...catch I've made before
 		
 		switch (chooseDifficulty) {
 		
@@ -114,6 +120,7 @@ public class GuessTheNumberGame {
 			
 			break;
 		}
+		// Depending on what the player choosed before (difficulty), this will run the code connected to the difficulty the player wrote in the consol
 		
 		
 		System.out.println("Do you want to play again?");
@@ -130,6 +137,9 @@ public class GuessTheNumberGame {
 			run = false;
 			System.out.println();
 			 System.out.println("Hope to see you soon, have a great time!");
+			 //The player get asked if he/she wants to play again, and the switch case are there to check the input from that player
+			 //And based on that, later run the codes connected to the answer.
+		
 			
 			}
 			} 
@@ -194,6 +204,7 @@ public class GuessTheNumberGame {
 
 			
 		for(int i = 1; i <= guessesLeft; i++) {
+			//runs the algorithm until the maximum amount of guessesLeft, depending on the difficulty. Goes up by one at a time.
 			
 			guessedNumber = checkIfInputAreInt();
 					
@@ -207,6 +218,8 @@ public class GuessTheNumberGame {
 			 if(guessedNumber > correctNumber) {
 				System.out.println("The number you're searching for are lower than what you've guessed");
 				System.out.println("You have" + " " + (guessesLeft - i) + " " + "guesses left" + ", please try again");
+				//guessesLeft - i, makes the guesses go down by one for every time the player guesses. If "i" would be replaced by "1",
+				//it would then just go down by one and not further for every time the player guess.
 			}
 			
 			 else if (guessedNumber < correctNumber) {
