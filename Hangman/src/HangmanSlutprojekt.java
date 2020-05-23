@@ -4,38 +4,125 @@ import java.util.Scanner;
 
 public class HangmanSlutprojekt {
 	
-	public static final String[] arraylistContainingCars = { "bmw", "mercedes", "volvo", "audi", "ford", "nissan", "toyota", "opel", "tesla",
-
-	};
-	public static final String[] arraylistContainingTeachers = { "Are", "Linda", "Tomas", "Erik", "Stefan", "Simon"
-	};
+	public static final String[] arraylistContainingCars = { "bmw", "mercedes", "volvo", "audi", "ford", "nissan", "toyota", "opel", "tesla", "saab", "volkswagen", "peugeuot", "chevrolet", "seat", "suzuki", "skoda", "fiat", "citroen", "kia", "mazda"};
+	public static final String[] arraylistContainingTeachers = { "Are", "Linda", "Tomas", "Erik", "Stefan", "Simon", "sacha", "dawid"};
+	public static final String[] arraylistContainingColors = { "yellow", "red", "blue", "pink", "black", "white", "gray", "purple", "brown", "green", "orange"};
+	public static final String[] arrayListContainingIntegers = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 	
-	public static final String[] arraylistContainingColors = { "yellow", "red", "blue", "pink", "black", "white", "gray", "purple", "brown", "green"
-	};
 	static final Random RANDOM = new Random();
 	static Scanner input = new Scanner(System.in);
-	public static final int maxErrors = 6;
+	public static final int maxErrors = 7;
 	public static int guessesLeft;
-	public String wordToFind;
-	public char[] wordFound;
-	public int wrongLetterInputs;
-	public String nextWordToFind;
-	public ArrayList < String >	letters = new ArrayList < > ();
+	public static String wordToFind;
+	public static char[] wordFound;
+	public static int wrongLetterInputs;
+	public static String nextWordToFind;
+	public static ArrayList < String >	letters = new ArrayList < > ();
+	public static String playerGuess;
 	
 	
-	public String nextWordToFindWithinCars() {
+	public static String nextWordToFindWithinCars() {
 		return arraylistContainingCars[RANDOM.nextInt(arraylistContainingCars.length)];
 	}
 	
-	public String nextWordToFindWithinColors() {
+	public static String nextWordToFindWithinColors() {
 		return arraylistContainingColors[RANDOM.nextInt(arraylistContainingColors.length)];
 	}
 	
-	public String nextWordToFindWithinTeachers() {
+	public static String nextWordToFindWithinTeachers() {
 		return arraylistContainingTeachers[RANDOM.nextInt(arraylistContainingTeachers.length)];
 	}
 	
 	
+	public static void main(String[] args) {
+		welcome();
+		playGame();
+	}
+	
+	
+	
+	
+	public static void welcome() {
+		System.out.println("\nHello and welcome to Hangman!");
+		System.out.println();
+		System.out.println("\nThe game works like this: You are going to try and guess a word by entering a letter one by one.");
+		System.out.println("\nYou'll get to see how long the word is and try to figure out what the word can be.");
+		System.out.println("\nThere's different subjects to choose from and once you have entered a correct letter, it'll replace the index for that specific letter");
+		System.out.println("\nAlso... You'll only have 7 guesses so use them well!" );
+		System.out.println();
+	}
+
+	public static void shortMessageBeforeStart() {
+		System.out.println();
+		System.out.println("Interesting choice, now let's see if you can guess the word with only 6 tries!");
+		System.out.println("(P.S Every word should be typed in with lowercase!)");
+	}
+	
+	
+	public static void playGame() {
+		playerChooseToPlayOrNot();
+		playerChooseSubjectMethod();
+		replaceLettersWithUnderscore();
+		shortMessageBeforeStart();
+		play();
+	}
+	
+	
+	public static void playGameAgain() {
+		resetStatsForNewGame();
+		playerChooseSubjectMethod();
+		replaceLettersWithUnderscore();
+		shortMessageBeforeStart();
+		play();
+		
+	}
+	
+	public static void play() {
+		try (Scanner input = new Scanner(System.in)) {
+			while (wrongLetterInputs < maxErrors) {
+				System.out.println("Enter a Letter: ");
+				
+				String str = input.nextLine();
+			
+			updateWordAfterCharacterInputFromUser(str);
+			System.out.println("\n" + wordFoundContent());
+			
+			if (wordFound()) {
+				System.out.println("\nCongrats, you won!");
+				System.out.println();
+				playHangmanAgain();
+				break;
+			} 
+			
+			else {
+				
+				System.out.println("Guesses Left : " + (maxErrors - wrongLetterInputs));
+				printOutHangman();
+			}
+			
+		}
+		if (wrongLetterInputs == maxErrors) {
+			System.out.println("\n unlucky, you lost!");
+			System.out.println("The correct word was : " + wordToFind);
+			System.out.println();
+			playHangmanAgain();
+		}
+		printOutHangman();
+			
+			
+		}
+	}
+	
+	
+	
+	
+	
+	
+	public static void resetStatsForNewGame() {
+		guessesLeft = 6;
+		letters.clear();
+		wrongLetterInputs = 0;
+	}
 	
 	public static int isNextInputInt () {
 		while(true)	{
@@ -43,16 +130,15 @@ public class HangmanSlutprojekt {
 				return input.nextInt();
 			}
 			catch (Exception e) {
-				System.out.println("Try typing in a number instead");
+				System.out.println("\n Try typing in a number instead");
 				input.nextLine();
-				continue;
 			}
 		}
 	}
 	
 	
 	
-	public void createWordToFind() {
+	public static void replaceLettersWithUnderscore() {
 		wordFound = new char[wordToFind.length()];
 		for (int i = 0; i < wordFound.length; i++) {
 			wordFound[i] = '_';
@@ -60,13 +146,32 @@ public class HangmanSlutprojekt {
 	}
 
 	
-	public boolean wordFound() {
+	public static boolean wordFound() {
 	return wordToFind.contentEquals(new String(wordFound));
 	}
 	
 	
+	public static void playHangmanAgain() {
+		System.out.println("Do you want to play again?");
+		System.out.println("Enter (1) for YES");
+		System.out.println("Enter (2) for NO");
+		int playAgainOrNot = isNextInputInt();
+		switch(playAgainOrNot) {
+		case 1: 
+			playGameAgain();
+			break;
+			
+		case 2: 
+			System.out.println("Alright, see you later!");
+			System.exit(0);
+			break;
+		}
+		
+	}
 	
-	public String wordFoundContent() {
+	
+	
+	public static String wordFoundContent() {
 		StringBuilder builder = new StringBuilder();
 		for (int i = 0; i < wordFound.length; i++) {
 			builder.append(wordFound[i]);
@@ -79,7 +184,10 @@ public class HangmanSlutprojekt {
 	}
 	
 	
-	public void updateWordAfterCharacterInputFromUser(String c) {
+	
+
+	
+	public static void updateWordAfterCharacterInputFromUser(String c) {
 		if(!letters.contains (c)) {
 			if (wordToFind.contains (c)) {
 				int index = wordToFind.indexOf(c);
@@ -101,38 +209,15 @@ public class HangmanSlutprojekt {
 	
 	
 	
-	public void play() {
-		try (Scanner input = new Scanner(System.in)) {
-			while (wrongLetterInputs < maxErrors) {
-				System.out.println("\nEnter a Letter : ");
-				String str = input.nextLine();
-				if (str.length() > 1) {
-					str = str.substring(0, 1);
-				}
-			
-			updateWordAfterCharacterInputFromUser(str);
-			System.out.println("\n" + wordFoundContent());
-			
-			if (wordFound()) {
-				System.out.println("\nCongrats, you win!");
-				break;
-			} else {
-				System.out.println("\n Guesses Left : " + (maxErrors - wrongLetterInputs));
-			}
-			
-		}
-		if (wrongLetterInputs == maxErrors) {
-			System.out.println("\n unlucky, you lost!");
-			System.out.println("\n The correct word was : " + wordToFind);
-		}
-				
-	}
-	
-	}
 	
 	
-	public void playerChooseSubjectMethod() {
-		int playerChooseSubject = input.nextInt();
+	
+	public static void playerChooseSubjectMethod() {
+		System.out.println("Choose a subject:");
+		System.out.println("Enter (1) for cars.");
+		System.out.println("Enter (2) for teachers in NTI.");
+		System.out.println("Enter (3) for colors.");
+		int playerChooseSubject = isNextInputInt();
 		switch (playerChooseSubject) {
 		
 		case 1:
@@ -150,9 +235,31 @@ public class HangmanSlutprojekt {
 		
 	}
 	
+	public static void playerChooseToPlayOrNot() {
+		System.out.println("\nDo you want to give it a try?");
+		System.out.println("Enter (1) for YES");
+		System.out.println("Enter (2) for NO");
+		int playerChooseYesOrNo = isNextInputInt();
+
+		
+		switch (playerChooseYesOrNo) {
+		
+		case 1:
+			System.out.println("\nAyyy let's goooo");
+			break;
+			
+		case 2:
+			System.out.println("\nAlright, See You Later!");
+			System.exit(0);
+			break;
+		}
+	}
+	
+
+	
 	
 	public static void printOutHangman() {
-		if (guessesLeft == 6) {
+		if (wrongLetterInputs == 1) {
 			System.out.println(
 				    "   _____\n" +
 				    "   |   |\n" +
@@ -163,7 +270,7 @@ public class HangmanSlutprojekt {
 	                "_______|");
 		}
 		
-		else if (guessesLeft == 5) {
+		else if (wrongLetterInputs == 2) {
 			System.out.println(
 				    "   _____\n" +
 				    "   |   |\n" +
@@ -174,7 +281,7 @@ public class HangmanSlutprojekt {
 	                "_______|");
 		}
 		
-		else if (guessesLeft == 4) {
+		else if (wrongLetterInputs == 3) {
 			System.out.println(
 				    "   _____\n" +
 				    "   |   |\n" +
@@ -185,46 +292,46 @@ public class HangmanSlutprojekt {
 	                "_______|");
 		}
 		
-		else if (guessesLeft == 3) {
+		else if (wrongLetterInputs == 4) {
 			System.out.println(
 				    "   _____\n" +
 				    "   |   |\n" +
 	                "   O   |\n" +
-	                "  /|\\ |\n" +
+	                "  /|\\  |\n" +
 	                "       |\n" +
 	                "       |\n" +
 	                "_______|");
 		}
 		
-		else if (guessesLeft == 2) {
+		else if (wrongLetterInputs == 5) {
 			System.out.println(
 				    "   _____\n" +
 				    "   |   |\n" +
 	                "   O   |\n" +
-	                "  /|\\ |\n" +
+	                "  /|\\  |\n" +
 	                "   |   |\n" +
 	                "       |\n" +
 	                "_______|");
 		}
-		else if (guessesLeft == 1) {
+		else if (wrongLetterInputs == 6) {
 			System.out.println(
 				    "   _____\n" +
 				    "   |   |\n" +
 	                "   O   |\n" +
 	                "   |   |\n" +
-	                "  /|\\ |\n" +
+	                "  /|\\  |\n" +
 	                "  /    |\n" +
 	                "_______|");
 		}
 		
-		else if (guessesLeft == 0) {
+		else if (wrongLetterInputs == 7) {
 			System.out.println(
 				    "   _____\n" +
 				    "   |   |\n" +
 	                "   O   |\n" +
 	                "   |   |\n" +
-	                "  /|\\ |\n" +
-	                "  / \\ |\n" +
+	                "  /|\\  |\n" +
+	                "  / \\  |\n" +
 	                "_______|");
 		}
 	}
