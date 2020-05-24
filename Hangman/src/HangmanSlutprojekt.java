@@ -6,9 +6,7 @@ public class HangmanSlutprojekt {
 	
 	public static final String[] arraylistContainingCars = { "bmw", "mercedes", "volvo", "audi", "ford", "nissan", "toyota", "opel", "tesla", "saab", "volkswagen", "peugeuot", "chevrolet", "seat", "suzuki", "skoda", "fiat", "citroen", "kia", "mazda"};
 	public static final String[] arraylistContainingTeachers = { "are", "linda", "tomas", "erik", "stefan", "simon", "sacha", "dawid"};
-	public static final String[] arraylistContainingColors = { "yellow", "red", "blue", "pink", "black", "white", "gray", "purple", "brown", "green", "orange"};
-	ArrayList < Integer[] > arrayListContainingIntegers = new ArrayList < > ();
-	
+	public static final String[] arraylistContainingColors = { "yellow", "red", "blue", "pink", "black", "white", "gray", "purple", "brown", "green", "orange"};	
 	
 	
 	static final Random RANDOM = new Random();
@@ -231,12 +229,7 @@ public class HangmanSlutprojekt {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
+
 	public static void playerChooseSubjectMethod() {
 		System.out.println("Choose a subject:");
 		playerMustChooseASubject();
