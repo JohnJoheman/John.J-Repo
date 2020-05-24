@@ -5,9 +5,11 @@ import java.util.Scanner;
 public class HangmanSlutprojekt {
 	
 	public static final String[] arraylistContainingCars = { "bmw", "mercedes", "volvo", "audi", "ford", "nissan", "toyota", "opel", "tesla", "saab", "volkswagen", "peugeuot", "chevrolet", "seat", "suzuki", "skoda", "fiat", "citroen", "kia", "mazda"};
-	public static final String[] arraylistContainingTeachers = { "Are", "Linda", "Tomas", "Erik", "Stefan", "Simon", "sacha", "dawid"};
+	public static final String[] arraylistContainingTeachers = { "are", "linda", "tomas", "erik", "stefan", "simon", "sacha", "dawid"};
 	public static final String[] arraylistContainingColors = { "yellow", "red", "blue", "pink", "black", "white", "gray", "purple", "brown", "green", "orange"};
-	public static final String[] arrayListContainingIntegers = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+	ArrayList < Integer[] > arrayListContainingIntegers = new ArrayList < > ();
+	
+	
 	
 	static final Random RANDOM = new Random();
 	static Scanner input = new Scanner(System.in);
@@ -18,7 +20,8 @@ public class HangmanSlutprojekt {
 	public static int wrongLetterInputs;
 	public static String nextWordToFind;
 	public static ArrayList < String >	letters = new ArrayList < > ();
-	public static String playerGuess;
+	public static ArrayList < Integer > Integers = new ArrayList < > ();
+	public static char playerGuess;
 	
 	
 	public static String nextWordToFindWithinCars() {
@@ -40,25 +43,6 @@ public class HangmanSlutprojekt {
 	}
 	
 	
-	
-	
-	public static void welcome() {
-		System.out.println("\nHello and welcome to Hangman!");
-		System.out.println();
-		System.out.println("\nThe game works like this: You are going to try and guess a word by entering a letter one by one.");
-		System.out.println("\nYou'll get to see how long the word is and try to figure out what the word can be.");
-		System.out.println("\nThere's different subjects to choose from and once you have entered a correct letter, it'll replace the index for that specific letter");
-		System.out.println("\nAlso... You'll only have 7 guesses so use them well!" );
-		System.out.println();
-	}
-
-	public static void shortMessageBeforeStart() {
-		System.out.println();
-		System.out.println("Interesting choice, now let's see if you can guess the word with only 6 tries!");
-		System.out.println("(P.S Every word should be typed in with lowercase!)");
-	}
-	
-	
 	public static void playGame() {
 		playerChooseToPlayOrNot();
 		playerChooseSubjectMethod();
@@ -77,12 +61,31 @@ public class HangmanSlutprojekt {
 		
 	}
 	
+	public static void welcome() {
+		System.out.println("\nHello and welcome to Hangman!");
+		System.out.println();
+		System.out.println("\nThe game works like this: You are going to try and guess a word by entering a letter one by one.");
+		System.out.println("\nYou'll get to see how long the word is and try to figure out what the word can be.");
+		System.out.println("\nThere's different subjects to choose from and once you have entered a correct letter, it'll replace the index for that specific letter");
+		System.out.println("\nAlso... You'll only have 7 guesses so use them well!" );
+		System.out.println();
+	}
+
+	public static void shortMessageBeforeStart() {
+		System.out.println();
+		System.out.println("Interesting choice, now let's see if you can guess the word with only 7 tries!");
+		System.out.println("(P.S Every word should be typed in with lowercase!)");
+	}
+	
+	
+	
 	public static void play() {
 		try (Scanner input = new Scanner(System.in)) {
 			while (wrongLetterInputs < maxErrors) {
-				System.out.println("Enter a Letter: ");
+				System.out.println("Enter a Letter, otherwise it'll count as a wrong guess: ");
 				
 				String str = input.nextLine();
+				
 			
 			updateWordAfterCharacterInputFromUser(str);
 			System.out.println("\n" + wordFoundContent());
@@ -107,19 +110,30 @@ public class HangmanSlutprojekt {
 			System.out.println();
 			playHangmanAgain();
 		}
+		
+		
 		printOutHangman();
 			
 			
 		}
 	}
 	
-	
+	public static boolean isNextInputString() {
+		boolean isLetter = Character.isLetter(playerGuess);
+		if(!isLetter) {
+			System.out.println("You have to enter a letter!");
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 	
 	
 	
 	
 	public static void resetStatsForNewGame() {
-		guessesLeft = 6;
+		guessesLeft = 7;
 		letters.clear();
 		wrongLetterInputs = 0;
 	}
@@ -130,7 +144,7 @@ public class HangmanSlutprojekt {
 				return input.nextInt();
 			}
 			catch (Exception e) {
-				System.out.println("\n Try typing in a number instead");
+				System.out.println("Try typing in a number instead");
 				input.nextLine();
 			}
 		}
@@ -153,10 +167,18 @@ public class HangmanSlutprojekt {
 	
 	public static void playHangmanAgain() {
 		System.out.println("Do you want to play again?");
+		System.out.println();
+		checksIfPlayerTypesYesOrNo();
+		
+	}
+		
+
+	public static void checksIfPlayerTypesYesOrNo() {
 		System.out.println("Enter (1) for YES");
 		System.out.println("Enter (2) for NO");
-		int playAgainOrNot = isNextInputInt();
-		switch(playAgainOrNot) {
+		int answerFromPlayer = isNextInputInt();
+		
+		switch(answerFromPlayer) {
 		case 1: 
 			playGameAgain();
 			break;
@@ -165,10 +187,13 @@ public class HangmanSlutprojekt {
 			System.out.println("Alright, see you later!");
 			System.exit(0);
 			break;
+			
+		default:
+			System.out.println();
+			System.out.println("Didn't I just tell you to enter either 1 or 2!?");
+			checksIfPlayerTypesYesOrNo();
 		}
-		
 	}
-	
 	
 	
 	public static String wordFoundContent() {
@@ -214,6 +239,12 @@ public class HangmanSlutprojekt {
 	
 	public static void playerChooseSubjectMethod() {
 		System.out.println("Choose a subject:");
+		playerMustChooseASubject();
+		
+	}
+	
+	
+	public static void playerMustChooseASubject () {
 		System.out.println("Enter (1) for cars.");
 		System.out.println("Enter (2) for teachers in NTI.");
 		System.out.println("Enter (3) for colors.");
@@ -231,12 +262,21 @@ public class HangmanSlutprojekt {
 		case 3:
 			wordToFind = nextWordToFindWithinColors();
 			break;
+		default:
+			System.out.println();
+			System.out.println("Didn't I just tell you to enter either 1, 2 or 3!?");
+			playerMustChooseASubject();
 		}
-		
 	}
 	
 	public static void playerChooseToPlayOrNot() {
 		System.out.println("\nDo you want to give it a try?");
+		enterEitherOneOrTwo();
+			
+		}
+		
+		
+	public static void enterEitherOneOrTwo() {
 		System.out.println("Enter (1) for YES");
 		System.out.println("Enter (2) for NO");
 		int playerChooseYesOrNo = isNextInputInt();
@@ -252,8 +292,16 @@ public class HangmanSlutprojekt {
 			System.out.println("\nAlright, See You Later!");
 			System.exit(0);
 			break;
+			
+		default:
+			System.out.println();
+			System.out.println("You have to enter either 1 or 2 to continue the game!");
+			enterEitherOneOrTwo();
+			
+			
 		}
 	}
+	
 	
 
 	
